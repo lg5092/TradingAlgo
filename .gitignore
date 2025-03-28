@@ -1,0 +1,9 @@
+# Ignore compiled binaries
+/build/
+*.o
+
+# Ignore API keys
+config.json
+
+# MacOS files
+.DS_Store
