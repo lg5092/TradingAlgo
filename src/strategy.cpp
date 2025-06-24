@@ -1,10 +1,9 @@
 #include "strategy.h"
-#include <numeric> // for std::accumulate
+#include <numeric> 
 
 SMAStrategy::SMAStrategy(int shortP, int longP)
     : shortPeriod(shortP), longPeriod(longP) {}
 
-// Add the latest price and trim history if too long
 void SMAStrategy::updatePrice(double price) {
     priceHistory.push_back(price);
     if (priceHistory.size() > longPeriod) {
@@ -12,7 +11,6 @@ void SMAStrategy::updatePrice(double price) {
     }
 }
 
-// Calculate the average of the last N prices
 double SMAStrategy::calculateSMA(int period) {
     if (priceHistory.size() < period) {
         return 0.0;
@@ -29,7 +27,7 @@ double SMAStrategy::calculateSMA(int period) {
 // Determine whether to buy, sell, or hold
 std::string SMAStrategy::evaluate() {
     if (priceHistory.size() < longPeriod) {
-        return "hold"; // Not enough data yet
+        return "hold"; 
     }
 
     double shortSMA = calculateSMA(shortPeriod);

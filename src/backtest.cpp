@@ -56,7 +56,6 @@ void runBacktest(const std::string& csvFilePath, int shortPeriod, int longPeriod
         }
     }
 
-    // If holding at end, calculate portfolio value based on last price
     double finalPrice = strategy.calculateSMA(shortPeriod); 
     double finalPortfolio = cash + shares * finalPrice;
     double netPL = finalPortfolio - 10000.0;

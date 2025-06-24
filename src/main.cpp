@@ -27,13 +27,12 @@ int main() {
     if (mode == "backtest") {
         std::cout << "\nDownloading data from Alpaca...\n";
 
-        // Date range: you can customize or generate dynamically
+        // Date range
         std::string start = "2024-03-01T09:30:00Z";
         std::string end   = "2024-03-01T16:00:00Z";
         std::string outputFile = "data/AAPL_bars.csv";
         downloadHistoricalBars(apiKey, secretKey, symbol, start, end, outputFile);
 
-        // Run backtest 
         std::cout << "\n Running backtest...\n";
         runBacktest(outputFile, 5, 10);
     } 
