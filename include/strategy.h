@@ -8,7 +8,7 @@ class SMAStrategy {
 public:
     SMAStrategy(int shortPeriod, int longPeriod);
     void updatePrice(double price);
-    std::string evaluate(); // Returns "buy", "sell", or "hold"
+    std::string evaluate(); 
     double calculateSMA(int period);
 
 

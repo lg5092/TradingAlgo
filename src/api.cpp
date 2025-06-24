@@ -155,7 +155,7 @@ void downloadHistoricalBars(const std::string& apiKey, const std::string& secret
             out << time << "," << price << "\n";
         }
 
-        std::cout << "✅ Historical bars saved to: " << outputCSVPath << std::endl;
+        std::cout << "Historical bars saved to: " << outputCSVPath << std::endl;
     } catch (...) {
         std::cerr << "Error parsing or saving bars: " << readBuffer << std::endl;
     }

@@ -11,12 +11,12 @@ void runBacktest(const std::string& csvFilePath, int shortPeriod, int longPeriod
 
     std::ifstream file(csvFilePath);
     if (!file) {
-        std::cerr << "Failed to open CSV file: " << csvFilePath << std::endl;
+        std::cerr << "Failed to open file: " << csvFilePath << std::endl;
         return;
     }
 
     std::string line;
-    std::getline(file, line); // Skip header
+    std::getline(file, line);
 
     int shares = 0;
     double cash = 10000.0;
@@ -57,14 +57,14 @@ void runBacktest(const std::string& csvFilePath, int shortPeriod, int longPeriod
     }
 
     // If holding at end, calculate portfolio value based on last price
-    double finalPrice = strategy.calculateSMA(shortPeriod); // or just use last read price
+    double finalPrice = strategy.calculateSMA(shortPeriod); 
     double finalPortfolio = cash + shares * finalPrice;
     double netPL = finalPortfolio - 10000.0;
 
     std::cout << "\n--- Backtest Summary ---" << std::endl;
     std::cout << std::fixed << std::setprecision(2);
     std::cout << "Final Portfolio Value: $" << finalPortfolio << std::endl;
-    std::cout << "Net P&L: $" << netPL << (netPL >= 0 ? " ✅" : " ❌") << std::endl;
+    std::cout << "Net P&L: $" << netPL << (netPL >= 0 ? " Profit" : " Loss") << std::endl;
     std::cout << "Return: " << (netPL / 10000.0) * 100 << "%" << std::endl;
     std::cout << "Total Trades: " << totalTrades << std::endl;
     std::cout << "Winning Trades: " << wins << std::endl;
